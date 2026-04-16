@@ -1,30 +1,41 @@
+import Link from 'next/link';
+import { projects } from '@/data/projects';
+
 export const metadata = {
   title: 'Dự án',
   description: 'Danh sách dự án đã thực hiện',
 };
 
-const projects = [
-  { id: 1, name: 'Website thương mại điện tử', tech: 'Next.js, Tailwind CSS', link: '#' },
-  { id: 2, name: 'Ứng dụng quản lý nhân sự', tech: 'React, Node.js', link: '#' },
-  { id: 3, name: 'Portfolio cá nhân', tech: 'HTML, CSS, JS', link: '#' },
-];
-
-export default function Projects() {
+export default function ProjectsPage() {
   return (
-    <div className="min-h-screen p-8 sm:p-20 font-[family-name:var(--font-geist-sans)] max-w-3xl mx-auto">
+    <div className="max-w-5xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-bold mb-6">Dự án đã thực hiện</h1>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
+        Dưới đây là một số dự án tiêu biểu mình đã nghiên cứu, tham gia phát triển tại đại học và các dự án cá nhân.
+      </p>
+      <div className="grid gap-6">
         {projects.map((project) => (
-          <div key={project.id} className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg flex flex-col justify-between">
-            <div>
-              <h2 className="text-xl font-semibold mb-2">{project.name}</h2>
-              <p className="text-sm text-gray-500 mb-4">{project.tech}</p>
+          <Link
+            href={`/projects/${project.id}`}
+            key={project.id}
+            className="block border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:shadow-lg transition-all dark:bg-gray-900 group"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <h2 className="text-xl font-semibold group-hover:text-blue-600 transition-colors">{project.title}</h2>
+              <span className={`text-xs px-2 py-1 rounded-full ${project.status === 'Hoàn thành' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400'}`}>
+                {project.status}
+              </span>
             </div>
-            <a href={project.link} className="text-blue-500 hover:underline mt-4 inline-block">
-              Xem chi tiết &rarr;
-            </a>
-          </div>
+            <p className="text-sm text-gray-500 mb-3">{project.date}</p>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+            <div className="flex gap-2 flex-wrap">
+              {project.tech.map((t) => (
+                <span key={t} className="bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-400 text-sm px-3 py-1 rounded-md font-medium">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </Link>
         ))}
       </div>
     </div>

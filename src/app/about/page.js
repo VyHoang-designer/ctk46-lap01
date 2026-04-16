@@ -1,19 +1,24 @@
-export const metadata = {
-  title: 'Giới thiệu',
-  description: 'Thông tin chi tiết về bản thân',
-};
-
-export default function About() {
+export default function AboutPage() {
   return (
-    <div className="min-h-screen p-8 sm:p-20 font-[family-name:var(--font-geist-sans)] max-w-3xl mx-auto">
+    <div className="max-w-5xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-bold mb-6">Giới thiệu</h1>
-      <div className="prose dark:prose-invert">
+      <div className="space-y-4 text-gray-700 dark:text-gray-300">
         <p>
-          Chào bạn, tôi là một nhà phát triển phần mềm và thiết kế website. Tôi có niềm đam mê với việc tạo ra những trải nghiệm người dùng tuyệt vời và các sản phẩm có giá trị thực tiễn.
+          Xin chào! Tôi là <strong>Vy Hoang</strong>, sinh viên năm 4 ngành Công nghệ Thông tin tại Đại học Đà Lạt.
         </p>
-        <p>
-          Trang web này được xây dựng để lưu trữ các bài viết, dự án và thông tin cá nhân của tôi.
-        </p>
+        <h2 className="text-2xl font-semibold mt-8 mb-4">Kỹ năng</h2>
+        <ul className="list-disc list-inside space-y-2">
+          <li>JavaScript / TypeScript</li>
+          <li>React & Next.JS</li>
+          <li>Tailwind CSS</li>
+          <li>Git & GitHub</li>
+          <li>SQL & PostgreSQL</li>
+        </ul>
+        <h2 className="text-2xl font-semibold mt-8 mb-4">Học vấn</h2>
+        <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
+          <p className="font-medium text-gray-900 dark:text-gray-100">Đại học Đà Lạt</p>
+          <p className="text-gray-500">Cử nhân Công nghệ Thông tin (2021 — 2025)</p>
+        </div>
       </div>
     </div>
   );
